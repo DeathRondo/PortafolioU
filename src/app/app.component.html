@@ -1,8 +1,8 @@
 
 <nav class="flex justify-between py-15 m-auto text-lg font-medium tracking-widest md:items-center">
   <a href=""><img src="port.png" alt="" width="28"></a>
-  <div [ngClass]="{'': isSidebarOpen, 'hidden': !isSidebarOpen}" id="menu" class="bg-white dark:bg-slate-800 p-7 h-[380px] w-[320px] md:flex flex-col items-start justify-around rounded-lg 
-  text-dark dark:text-white md:flex-row md:w-full md:py-0 md:h-[50px] md:bg-inherit md:dark:bg-primary">
+  <div [ngClass]="{'': isSidebarOpen, 'hidden': !isSidebarOpen}" id="menu" class="bg-white dark:bg-slate-800 p-7 h-[380px] w-[320px] md:flex flex-col items-start 
+  justify-around rounded-lg text-dark dark:text-white md:flex-row md:w-full md:py-0 md:h-[50px] md:bg-inherit md:dark:bg-primary">
     <ul class="flex flex-col h-5/6 justify-around md:flex-row md:justify-center w-full">
       <li class="md:px-5 hover:text-sky-600"><a class="links" href="">Inicio</a></li>
       <li class="md:px-5 hover:text-sky-600"><a class="links" href="">Sobre mi</a></li>
@@ -46,33 +46,112 @@
   <h2 class="text-3xl text-slate-700 dark:text-white font-bold tracking-widest w-[85%] m-auto text-center pt-8">Sobre mi</h2>
   <section class="my-12 flex flex-col w-[84%] m-auto lg:flex-row lg:w-[87%] lg:my-28" id="jobSection">
     <div class="flex justify-between lg:flex-col lg:w-[20%]">
-      <button type="button" id="link1" data-id="job1" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:bg-white 
-      focus:border-sky-500 focus:dark:bg-slate-700 lg:border-l-2 lg:border-b-0 lg:h-full lg:text-left">
+      <!-- <button type="button" id="link1" data-id="job1" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:bg-white 
+      focus:border-sky-500 focus:dark:bg-slate-700 lg:border-l-2 lg:border-b-0 lg:h-full lg:text-left border-sky-500 dark:bg-slate-700">
         Menu 1
       </button>
       <button type="button" id="link2" data-id="job2" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:bg-white 
-      focus:border-sky-500 focus:dark:bg-slate-700 lg:border-l-2 lg:border-b-0 lg:h-full lg:text-left border-sky-500 bg-white dark:bg-slate-700">menu 2</button>
+      focus:border-sky-500 focus:dark:bg-slate-700 lg:border-l-2 lg:border-b-0 lg:h-full lg:text-left">menu 2</button>
       <button type="button" id="link3" data-id="job3" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:bg-white 
       focus:border-sky-500 focus:dark:bg-slate-700 lg:border-l-2 lg:border-b-0 lg:h-full lg:text-left">menu 3</button>
       <button type="button" id="link4" data-id="job4" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:bg-white 
-      focus:border-sky-500 focus:dark:bg-slate-700 lg:border-l-2 lg:border-b-0 lg:h-full lg:text-left">menu 4</button>
+      focus:border-sky-500 focus:dark:bg-slate-700 lg:border-l-2 lg:border-b-0 lg:h-full lg:text-left">menu 4</button> -->
+      <button *ngFor="let article of articles" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:bg-white 
+      focus:border-sky-500 focus:dark:bg-slate-700 lg:border-l-2 lg:border-b-0 lg:h-full lg:text-left border-sky-500 dark:bg-slate-700"
+      (click)="showArticle(article.id)" >
+      {{article.title}}
+    </button>
     </div>
     <div class="my-5 lg:px-10 lg:my-0 lg:max-w-[800px]">
       <!-- descripcion de trabajo-->
-    <article>
-      <h3>Descripcion <span>Menu 1</span></h3>
-      <h4>Fecha con rango</h4>
+
+      <article *ngFor="let article of articles" [class.hidden]="activeArticle !== article.id">
+        <h3>Descripcion <span class="text-sky-500 font-bold text-lg">{{article.title}}</span></h3>
+        <ul>
+          <!-- <li *ngFor="let item of article.content" class="flex items-center py-2">
+          <span class="pr-2 text-sky-500 font-black">&#9655;</span>
+          <p>{{item.content1}}</p> 
+          </li>
+        -->
+          <li *ngFor="let item of article.content" class="flex items-center py-2">
+            
+            <p><span class="pr-2 text-sky-500 font-black">&#9655;</span>{{ item.content1}}</p>
+            <p><span class="pr-2 text-sky-500 font-black">&#9655;</span>{{ item.content2}}</p>
+            <p><span class="pr-2 text-sky-500 font-black">&#9655;</span>{{ item.content3}}</p>    
+          </li>
+        </ul>
+
+      </article>
+      <!-- <article id="{{articles.id}}">
+        <h3>Descripcion <span class="text-sky-500 font-bold text-lg">Menu 1</span></h3>
+          <h4 class="text-sm pb-5">Fecha con rango</h4>
+            <ul>
+              <li class="flex items-center py-2">
+              <span class="pr-2 text-sky-500 font-black">&#9655;</span>
+              <p>
+                  parrafo descriptivo de mis trabajos
+              </p>
+              </li>
+            </ul>
+        </article> -->
+      <!-- 
+      <article id="job2" class="hidden">
+      <h3>Descripcion 2 <span> alguito2</span>
+        <h4> Fecha con rango</h4>
+        <ul>
+          <li class="flex items-center py-2">
+            <span class="pr-2 text-sky-500 font-black">&#9655;</span>
+            <p>
+              Parrafo descriptivo de mis trabajos
+            </p>
+          </li>
+        </ul>
+      </h3>
+      </article>
+      <article id="job3" class="hidden">
+      <h3>Descripcion <span class="text-sky-500 font-bold text-lg">Menu 1</span></h3>
+      <h4 class="text-sm pb-5">Fecha con rango</h4>
       <ul>
-        <li>
+        <li class="flex items-center py-2">
+         <span class="pr-2 text-sky-500 font-black">&#9655;</span>
           <p>
             parrafo descriptivo de mis trabajos
           </p>
         </li>
       </ul>
-      <h3>Descripcion 2 <span> alguito2</span></h3>
-      <h3>Descripcion 3 <span> alguito3</span></h3>
-      <h3>Descripcion 4 <span> alguito4</span></h3>
+      </article>
+      <article id="job3" class="hidden">
+
+      <h3>Descripcion <span class="text-sky-500 font-bold text-lg">Menu 1</span></h3>
+      <h4 class="text-sm pb-5">Fecha con rango</h4>
+      <ul>
+        <li class="flex items-center py-2">
+          <span class="pr-2 text-sky-500 font-black">&#9655;</span>
+          <p>
+            parrafo descriptivo de mis trabajos
+          </p>
+        </li>
+      </ul>
     </article>
+    -->
+    </div>
+  </section> 
+
+  <!-- seccion de proyectos-->
+  <h3 class="text-3xl text-slate-700 dark:text-white my-5 px-12 font-bold tracking-widest md:text-center">Proyectos</h3>
+  <section>
+    <div>
+      <div>
+        <img src="" alt="">
+        <h4>Nombre ultima experiencia laboral</h4>
+        <article>
+          <div>
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JS</span>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 </main>
