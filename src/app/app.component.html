@@ -139,20 +139,48 @@
 
   <!-- seccion de proyectos-->
   <h3 class="text-3xl text-slate-700 dark:text-white my-5 px-12 font-bold tracking-widest md:text-center">Proyectos</h3>
-  <section>
-    <div>
-      <div>
-        <img src="" alt="">
-        <h4>Nombre ultima experiencia laboral</h4>
-        <article>
-          <div>
-            <span>HTML</span>
-            <span>CSS</span>
-            <span>JS</span>
+  <!-- Para copiar la card completa, se debe copiar este section-->
+  <section class="my-12 flex flex-col items-center justify-center w-[90%] m-auto lg:flex-row">
+    <div class="border-1 rounded-lg bg-white dark:bg-slate-800 m-5">
+      <div class="m-2">
+        <img src="./profile.webp" alt="" class="opacity-80 hover:opacity-100 h-64 ">
+        <h4 class="font-bold my-2">Nombre ultima experiencia laboral</h4>
+        <article class="flex justify-between">
+          <div class="flex flex-nowrap items-center">
+            <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">HTML</span>
+            <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">CSS</span>
+            <span class="bg-slate-200 rounded-lg px-2 mr-2 text-slate-700">JS</span>
+          </div>
+          <div class="text-xl text-slate-600 dark:text-slate-200 pr-2 flex flex-nowrap">
+            <a href="" ><i class="bi bi-github px-2"></i></a>
+            <a href=""><i class="bi bi-eye px-2"></i></a>  
           </div>
         </article>
       </div>
     </div>
   </section>
+
+  <!-- Seccion de contacto-->
+
+  <h3 class="text-3xl text-slate-700 dark:textwhite mt-12 mb-10 px-10 font-bold tracking-widest text-center">Contacto</h3>
+  <section class="flex flex-col w-[90%] m-auto">
+    <form class="90% md:mx-w-[600px] m-auto" action="">
+      <div><input placeholder="info@ejemplo.com" type="email" name="email" id="email" class="p-3 w-full rounded-lg focus:outline-none focus:ring focus:ring-blue-400"></div>
+      <div><textarea name="msj" id="msj" rows="5" placeholder="Mensaje" class="p-3 w-full rounded-lg focus:outline-none focus:ring focus:ring-blue-400"></textarea></div>
+      <div class="py-3">
+        <input type="text" name="nombre" id="nombre" placeholder="Nombre" class="py-3 w-full rounded-lg focus:ring focus:ring-blue-400">
+      </div>
+      <div class="my-3">
+        <button class="bg-sky-600 text-white p-3 w-full rounded-lg text-xl tracking-widest">Enviar Mensaje</button>
+      </div>
+    </form>
+  </section>
+  <footer class="text-center mt-12 mb-5">
+    <p class="hover:text-sky-500"> Desarrollo web 2025 </p>
+    <a href=""></a>
+    <a href=""></a>
+    <a href=""></a>
+    <a href=""></a>
+  </footer>
 </main>
 <router-outlet></router-outlet>
