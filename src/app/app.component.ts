@@ -56,28 +56,27 @@ articles = [
     content1: 'contenido del trabajo menu 3', content2: 'contenido del trabajo 2', content3: 'contenido del trabajo 3'}
   ]},
   {id: 'job4' , title: 'Menu 4',  content: [{
-    content1: 'contenido del trabajo menu 4', content2: 'contenido del trabajo 2', content3: 'contenido del trabajo 3'}
+    content1: 'contenido del trabajo menu 4xxx', content2: 'contenido del trabajo 2', content3: 'contenido del trabajo 3'}
   ]},
 ]
 
 //articulo activo por defect
 activeArticle: string | null = 'job1'
+selectedId: string = '';
+
 
 showArticle(id:string){
   this.activeArticle = id;
 }
 
-
-
-
-
-
-
-
   ngOnInit() {
     if (localStorage.getItem('theme') === 'dark') {
       document.documentElement.classList.add('dark');
     }
+    if (this.articles.length > 0) {
+    this.selectedId = this.articles[0].id;
+  }
+
   }
 
   toggleMenu() {
@@ -86,3 +85,4 @@ showArticle(id:string){
 
 
 }
+

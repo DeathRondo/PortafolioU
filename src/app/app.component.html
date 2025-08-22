@@ -1,9 +1,9 @@
 
 <nav class="flex justify-between py-15 m-auto text-lg font-medium tracking-widest md:items-center">
-  <a href=""><img src="port.png" alt="" width="28"></a>
+  <a href=""><img src="port.png" alt="" width="84"></a>
   <div [ngClass]="{'': isSidebarOpen, 'hidden': !isSidebarOpen}" id="menu" class="bg-white dark:bg-slate-800 p-7 h-[380px] w-[320px] md:flex flex-col items-start 
   justify-around rounded-lg text-dark dark:text-white md:flex-row md:w-full md:py-0 md:h-[50px] md:bg-inherit md:dark:bg-primary">
-    <ul class="flex flex-col h-5/6 justify-around md:flex-row md:justify-center w-full">
+    <ul class="flex flex-col h-5/6 justify-around md:flex-row md:justify-center w-full dark:bg-slate-700 md:dark:bg-slate-800">
       <li class="md:px-5 hover:text-sky-600"><a class="links" href="">Inicio</a></li>
       <li class="md:px-5 hover:text-sky-600"><a class="links" href="">Sobre mi</a></li>
       <li class="md:px-5 hover:text-sky-600"><a class="links" href="">Proyectos</a></li>
@@ -37,8 +37,8 @@
     </div>
     <!-- contenedor de imagen-->
     <div class="my-10 w-full">
-       <div class="w-[300px] h-[300px] m-auto bg-[url('/logo.png')] lg:bg-[url('/logo.png')] 
-       bg-cover rounded-lg lg:w-[100%] lg:h-[100%] lg:bg-center lg:bg-no-repeat "></div>
+       <div class="w-[300px] h-[320px] m-auto bg-[url('/logo.png')] lg:bg-[url('/logo.png')] 
+       bg-cover rounded-lg lg:w-[80%] lg:h-[80%] lg:bg-center lg:bg-no-repeat "></div>
     </div>
   </section>
 
@@ -56,13 +56,15 @@
       focus:border-sky-500 focus:dark:bg-slate-700 lg:border-l-2 lg:border-b-0 lg:h-full lg:text-left">menu 3</button>
       <button type="button" id="link4" data-id="job4" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:bg-white 
       focus:border-sky-500 focus:dark:bg-slate-700 lg:border-l-2 lg:border-b-0 lg:h-full lg:text-left">menu 4</button> -->
-      <button *ngFor="let article of articles" class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:bg-white 
-      focus:border-sky-500 focus:dark:bg-slate-700 lg:border-l-2 lg:border-b-0 lg:h-full lg:text-left border-sky-500 dark:bg-slate-700"
-      (click)="showArticle(article.id)" >
+
+      <!-- border-sky-500 debe ser condicionado si el id esta seleccionado-->
+      <button *ngFor="let article of articles"  class="border-b-2 hover:dark:bg-slate-700 w-full px-4 py-1 hover:bg-white focus:bg-white 
+      focus:border-sky-500 focus:dark:bg-slate-700 lg:border-l-2 lg:border-b-0 lg:h-full lg:text-left  dark:bg-slate-700" 
+      (click)="showArticle(article.id)" [ngClass]="{'border-sky-500, bg-white, dark:bg-slate-700': selectedId === article.id}">
       {{article.title}}
     </button>
     </div>
-    <div class="my-5 lg:px-10 lg:my-0 lg:max-w-[800px]">
+    <div class="my-5 lg:px-10 lg:my-0 lg:max-w-[500px]">
       <!-- descripcion de trabajo-->
 
       <article *ngFor="let article of articles" [class.hidden]="activeArticle !== article.id">
@@ -73,7 +75,7 @@
           <p>{{item.content1}}</p> 
           </li>
         -->
-          <li *ngFor="let item of article.content" class="flex items-center py-2">
+          <li *ngFor="let item of article.content" class="items-center py-2">
             
             <p><span class="pr-2 text-sky-500 font-black">&#9655;</span>{{ item.content1}}</p>
             <p><span class="pr-2 text-sky-500 font-black">&#9655;</span>{{ item.content2}}</p>
@@ -162,13 +164,13 @@
 
   <!-- Seccion de contacto-->
 
-  <h3 class="text-3xl text-slate-700 dark:textwhite mt-12 mb-10 px-10 font-bold tracking-widest text-center">Contacto</h3>
+  <h3 class="text-3xl text-slate-700 dark:text-white mt-12 mb-10 px-10 font-bold tracking-widest text-center">Contacto</h3>
   <section class="flex flex-col w-[90%] m-auto">
     <form class="w-[40%] md:mx-w-[600px] m-auto" action="">
       <div class="py-3"><input placeholder="info@ejemplo.com" type="email" name="email" id="email" class="p-3 w-full rounded-lg focus:outline-none focus:ring focus:ring-blue-400 bg-white"></div>
       <div><textarea name="msj" id="msj" rows="5" placeholder="Mensaje" class="p-3 w-full rounded-lg focus:outline-none focus:ring focus:ring-blue-400 bg-white"></textarea></div>
       <div class="py-3">
-        <input type="text" name="nombre" id="nombre" placeholder="Nombre" class="py-3 pl-3 w-full rounded-lg focus:ring focus:ring-blue-400 bg-white">
+        <input type="text" name="nombre" id="nombre" placeholder="Nombre" class="py-3 pl-3 w-full rounded-lg focus:ring focus:ring-blue-400 bg-white dark:text-black">
       </div>
       <div class="my-3">
         <button class="bg-sky-600 text-white p-3 w-full rounded-lg text-xl tracking-widest">Enviar Mensaje</button>
